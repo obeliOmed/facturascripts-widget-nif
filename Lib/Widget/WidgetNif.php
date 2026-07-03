@@ -22,6 +22,25 @@ use FacturaScripts\Plugins\WidgetNif\Lib\NifValidator;
  */
 class WidgetNif extends BaseWidget
 {
+    /**
+     * XML attribute "allowpassport" (default true). Set allowpassport="false" to
+     * make the client-side ✓/✗ feedback treat passport-shaped values as invalid.
+     *
+     * IMPORTANT: this ONLY affects the visual JS feedback. It does not, and
+     * cannot, reach the consumer model's test() automatically — FacturaScripts
+     * has no bridge from XMLView widget attributes to model validation. If you
+     * need this enforced server-side, call
+     * NifValidator::validate($this->nif, false) explicitly in your model.
+     */
+    private bool $allowPassport = true;
+
+    public function __construct($data)
+    {
+        parent::__construct($data);
+        $this->allowPassport = !isset($data['allowpassport'])
+            || strtolower((string)$data['allowpassport']) !== 'false';
+    }
+
     protected function assets(): void
     {
         $route = Tools::config('route');
@@ -44,6 +63,7 @@ class WidgetNif extends BaseWidget
             . ' maxlength="20"'
             . ' autocomplete="off"'
             . ' data-nif-validate="1"'
+            . ' data-nif-allow-passport="' . ($this->allowPassport ? 'true' : 'false') . '"'
             . $this->inputHtmlExtraParams()
             . '/>';
 

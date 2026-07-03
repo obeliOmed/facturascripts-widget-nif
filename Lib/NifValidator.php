@@ -143,9 +143,19 @@ class NifValidator
 
     /**
      * Entry point: detects type and validates.
-     * Passports are accepted (pattern-based only — no algorithmic check).
+     *
+     * Passports are accepted by pattern only (no algorithmic check) unless
+     * $allowPassport is false, in which case any value detected as 'passport'
+     * is rejected. Useful for businesses that never deal with foreign
+     * documents and want the field restricted to Spanish NIF/NIE/CIF only.
+     *
+     * Note: this parameter only affects THIS PHP call. The widget's XML
+     * attribute (if used) only drives the client-side visual feedback — it
+     * cannot reach the consumer model's test() automatically. Call this
+     * method with $allowPassport = false explicitly from your model if you
+     * need it enforced server-side.
      */
-    public static function validate(string $value): bool
+    public static function validate(string $value, bool $allowPassport = true): bool
     {
         if (empty($value)) {
             return false;
@@ -159,7 +169,7 @@ class NifValidator
             case 'cif':
                 return self::validateCif($value);
             case 'passport':
-                return true;
+                return $allowPassport;
             default:
                 return false;
         }

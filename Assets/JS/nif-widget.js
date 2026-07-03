@@ -65,13 +65,13 @@
         return ctrl === ctrlLetter || ctrl === ctrlDigit;
     }
 
-    function validate(value) {
+    function validate(value, allowPassport) {
         var v = normalize(value);
         var type = detectType(v);
         if (type === 'nif') return { valid: validateNif(v), label: 'NIF' };
         if (type === 'nie') return { valid: validateNie(v), label: 'NIE' };
         if (type === 'cif') return { valid: validateCif(v), label: 'CIF' };
-        if (type === 'passport') return { valid: true, label: 'PAS' };
+        if (type === 'passport') return { valid: allowPassport !== false, label: 'PAS' };
         return { valid: false, label: null };
     }
 
@@ -98,7 +98,8 @@
                 clearFeedback(this);
                 return;
             }
-            showFeedback(this, validate(value));
+            var allowPassport = this.getAttribute('data-nif-allow-passport') !== 'false';
+            showFeedback(this, validate(value, allowPassport));
         });
 
         // Clear badge on form reset.
