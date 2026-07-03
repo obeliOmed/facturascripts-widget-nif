@@ -275,6 +275,23 @@ class NifValidatorTest extends TestCase
         $this->assertTrue(NifValidator::validate('ABC123456'));
     }
 
+    public function testValidatePassportAcceptedWhenAllowPassportTrue(): void
+    {
+        $this->assertTrue(NifValidator::validate('ABC123456', true));
+    }
+
+    public function testValidatePassportRejectedWhenAllowPassportFalse(): void
+    {
+        $this->assertFalse(NifValidator::validate('ABC123456', false));
+    }
+
+    public function testValidateCifUnaffectedByAllowPassportFalse(): void
+    {
+        // allowPassport only applies to values detected as 'passport' — a real
+        // CIF must still validate normally regardless of this flag.
+        $this->assertTrue(NifValidator::validate('B12345674', false));
+    }
+
     public function testValidateEmptyReturnsFalse(): void
     {
         $this->assertFalse(NifValidator::validate(''));

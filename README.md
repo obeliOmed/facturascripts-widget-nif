@@ -47,6 +47,26 @@ public function test(): bool
 }
 ```
 
+## Restricting passports (no algorithmic check exists for them)
+
+By default, any 6-12 alphanumeric value that doesn't match NIF/NIE/CIF is accepted as a
+passport with no verification. To disable this in the widget's **visual feedback only**:
+
+```xml
+<widget type="nif" fieldname="nif" allowpassport="false" />
+```
+
+This does **not** reach your model automatically — FacturaScripts has no bridge from
+XMLView widget attributes to model validation. To actually reject passports on save, pass
+the flag explicitly in your own `test()`:
+
+```php
+if (!empty($this->nif) && !NifValidator::validate($this->nif, false)) {
+    $this->toolBox()->log()->error('nif-validation-error');
+    return false;
+}
+```
+
 ---
 
 ## Requirements

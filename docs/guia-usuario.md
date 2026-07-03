@@ -25,7 +25,7 @@ El campo de NIF/NIE/CIF valida automáticamente el documento de identificación 
 
 Los pasaportes extranjeros no siguen el algoritmo matemático español. Por ello, el sistema aceptará cualquier combinación de 6 a 12 caracteres alfanuméricos como un pasaporte válido, siempre que no coincida con la estructura de un NIF/NIE/CIF — sin comprobar que el pasaporte sea real.
 
-Si tu negocio no trabaja con clientes/pacientes extranjeros y quieres que el campo sea estricto (solo NIF/NIE/CIF españoles), consulta con el equipo técnico: hoy esa restricción **no está disponible como opción de configuración** — es una mejora pendiente, no la des por hecha en ningún formulario todavía.
+Si tu negocio no trabaja con clientes/pacientes extranjeros y quieres que el campo sea estricto (solo NIF/NIE/CIF españoles), pide a soporte que active esa restricción en ese formulario concreto. Importante: esto solo cambia el aviso visual (✓/✗) — que el guardado se bloquee de verdad depende de que el desarrollador del formulario lo haya configurado también en el modelo (ver siguiente apartado).
 
 ## ⚠️ El aviso ✗/✓ es solo una ayuda visual, no un bloqueo garantizado
 
