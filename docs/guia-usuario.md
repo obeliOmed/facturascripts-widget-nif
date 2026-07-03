@@ -2,7 +2,7 @@
 
 ## ¿Qué hace este campo?
 
-El campo de NIF/NIE/CIF valida automáticamente el documento de identificación fiscal español mientras lo escribes, y te avisa si tiene un error antes de guardar el formulario.
+El campo de NIF/NIE/CIF valida automáticamente el documento de identificación fiscal español mientras lo escribes, y te avisa con un aviso visual (✓/✗) si el formato tiene un error.
 
 ## Cómo usarlo
 
@@ -23,9 +23,13 @@ El campo de NIF/NIE/CIF valida automáticamente el documento de identificación 
 
 ## ⚠️ Importante sobre pasaportes
 
-Los pasaportes **no tienen ningún control matemático** — a diferencia del NIF/NIE/CIF, España no dispone de un algoritmo público para verificar pasaportes extranjeros. Esto significa que **cualquier texto de 6 a 12 letras/números que no parezca un NIF/NIE/CIF español se acepta como pasaporte válido**, sin comprobar que sea real.
+Los pasaportes extranjeros no siguen el algoritmo matemático español. Por ello, el sistema aceptará cualquier combinación de 6 a 12 caracteres alfanuméricos como un pasaporte válido, siempre que no coincida con la estructura de un NIF/NIE/CIF — sin comprobar que el pasaporte sea real.
 
-Si necesitas que el campo sea estricto (solo NIF/NIE/CIF de residentes españoles, sin aceptar "pasaportes"), pide a soporte que active la opción `allowPassport="false"` en ese formulario.
+Si tu negocio no trabaja con clientes/pacientes extranjeros y quieres que el campo sea estricto (solo NIF/NIE/CIF españoles), consulta con el equipo técnico: hoy esa restricción **no está disponible como opción de configuración** — es una mejora pendiente, no la des por hecha en ningún formulario todavía.
+
+## ⚠️ El aviso ✗/✓ es solo una ayuda visual, no un bloqueo garantizado
+
+El aviso verde/rojo te ayuda a detectar errores mientras escribes, pero **por sí solo no impide guardar el formulario**. Que el guardado quede realmente bloqueado ante un NIF inválido depende de cómo esté configurado ESE formulario en concreto. Si detectas que se ha guardado un registro con un NIF/NIE/CIF que sabes que es incorrecto, repórtalo a soporte — es un formulario que necesita reforzarse, no un fallo que debas resolver tú.
 
 ## Preguntas frecuentes
 
