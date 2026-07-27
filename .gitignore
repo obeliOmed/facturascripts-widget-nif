@@ -40,3 +40,6 @@ libs/
 *.7z
 nbproject/project.properties
 /nbproject
+.phpunit.cache/
+.phpunit.result.cache
+composer.phar

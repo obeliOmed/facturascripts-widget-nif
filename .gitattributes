@@ -1,0 +1,54 @@
+# Line endings
+* text=auto eol=lf
+*.bat text eol=crlf
+*.cmd text eol=crlf
+*.ps1 text eol=crlf
+*.png binary
+*.jpg binary
+*.gif binary
+*.pdf binary
+*.zip binary
+
+# Export-ignore — files excluded from `git archive` .zip distributions
+# (FS marketplace consumers download source-only, no dev tooling).
+
+# Tests
+/Test/                    export-ignore
+/tests/                   export-ignore
+/Tests/                   export-ignore
+/phpunit.xml              export-ignore
+/phpunit.xml.dist         export-ignore
+/phpunit-integration.xml  export-ignore
+/phpunit-integration.xml.dist export-ignore
+
+# JS / Playwright
+/playwright.config.ts     export-ignore
+/playwright.config.js     export-ignore
+/package.json             export-ignore
+/package-lock.json        export-ignore
+/node_modules/            export-ignore
+/playwright-report/       export-ignore
+/test-results/            export-ignore
+/.playwright/             export-ignore
+/e2e/                     export-ignore
+
+# Cache / IDE
+/.phpunit.cache/          export-ignore
+/.phpunit.result.cache    export-ignore
+/nbproject/               export-ignore
+/.idea/                   export-ignore
+/.vscode/                 export-ignore
+
+# CI / meta
+/.github/                 export-ignore
+/.gitignore               export-ignore
+/.gitattributes           export-ignore
+/composer.phar            export-ignore
+
+# Session logs / dev docs (not part of runtime plugin)
+/_SESSION-LOG.md          export-ignore
+/ACTIVE-SPEC.md           export-ignore
+/_PENDIENTES.md           export-ignore
+/CLAUDE.md                export-ignore
+/changelog/               export-ignore
+/review/                  export-ignore
